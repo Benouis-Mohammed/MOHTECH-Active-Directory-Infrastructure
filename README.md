@@ -60,7 +60,7 @@ The lab uses a dual-network-interface server, connecting the internal company ne
 **Server Network Configuration**
 
 <div align="center">
-  <img src="screenshots/01-server-network/network-configuration.png" width="85%" alt="Server network configuration">
+  <img src="IPconfig.png" width="85%" alt="Server network configuration">
 </div>
 
 **DNS and DHCP Configuration**
