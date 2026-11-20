@@ -3,7 +3,7 @@
   <table>
     <tr>
       <td width="130" align="center" valign="middle">
-        <img src="assets/logo.png" width="110" alt="MOHTECH Solutions">
+        <img src="Black and White Youtube Profile Picture  (1).png" width="110" alt="MOHTECH Solutions">
       </td>
       <td valign="middle">
         <h1>MOHTECH SOLUTIONS</h1>
