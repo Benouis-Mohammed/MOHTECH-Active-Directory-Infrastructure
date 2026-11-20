@@ -18,102 +18,142 @@
 
 ## 01. Project Overview
 
-MOHTECH Solutions is a growing technology company looking to establish and organize its internal IT infrastructure.
+MOHTECH Solutions is a simulated small business requiring a centralized IT infrastructure to manage its employees, workstations, network services, and shared resources.
 
-As the company expands, it needs a reliable and centralized environment to manage employees, workstations, network services, and access to shared resources.
+Taking the role of an IT administrator, I designed and deployed a Windows Server 2019 environment to provide centralized user management, network services, access control, and workstation policies.
 
-Taking on the role of an IT administrator, I was tasked with designing and deploying the company's initial IT infrastructure using **Windows Server 2019**.
+The project was implemented in a virtualized home lab using VMware Workstation.
 
-The project starts with deploying a Windows Server environment and configuring **Active Directory Domain Services (AD DS)** to centrally manage users, computers, and organizational units.
-
-Essential network services are then configured, including **DNS, DHCP, and NAT**, followed by departmental security groups, shared folders with controlled permissions, and Group Policy configurations.
-
-The objective is to simulate the deployment and administration of a small-business IT environment while gaining practical experience in Windows Server administration, networking, access control, and troubleshooting.
-
-## 02. Project Scope
-
-The project covers the following implementation areas:
-
-- Windows Server 2019 deployment
-- Active Directory Domain Services (AD DS)
-- DNS and DHCP configuration
-- NAT and network connectivity
-- Organizational Units and security groups
-- Departmental file sharing and NTFS permissions
-- Group Policy configuration
-- PowerShell user provisioning
-- Troubleshooting and verification
-
----
-
-## 03. Lab Environment
-
-The infrastructure was built in a virtualized home lab to simulate a small-business network.
+## 02. Lab Environment
 
 | Component | Configuration |
 |:---|:---|
-| Server Operating System | Windows Server 2019 |
-| Client Operating System | Windows Client VM |
-| Domain | ad.mohtechsolutions.test |
-| Internal Network | 192.168.10.0/24 |
-| Server Internal IP | 192.168.10.10 |
-| DHCP Scope | 192.168.10.100 – 192.168.10.200 |
-| Server External Interface | DHCP |
+| Server OS | Windows Server 2019 |
+| Client OS | Windows Client VM |
+| Domain | `ad.mohtechsolutions.test` |
+| Internal Network | `192.168.10.0/24` |
+| Server Internal IP | `192.168.10.10` |
+| DHCP Scope | `192.168.10.100 – 192.168.10.200` |
 | Virtualization | VMware Workstation |
 
-### Network Interfaces
+### Network Topology
 
-The server uses two network interfaces:
-
-- **External Interface (Internet):** Obtains its IP configuration through DHCP and provides external network connectivity.
-- **Internal Interface (Internal):** Uses the static IP address `192.168.10.10` and connects the server to the internal company network.
-
-Windows Server is also configured to provide NAT for internal network connectivity in this lab environment.
-
----
-
-## 04. Lab Topology
-
-The following diagram illustrates the lab architecture, including the Windows Server, its network interfaces, and the internal company network.
+The lab uses a dual-network-interface server, connecting the internal company network to external network connectivity through NAT.
 
 <div align="center">
-  <img src="MOHTECH-Network-Topology.png" width="80%" alt="MOHTECH Solutions Network Topology">
-  <p><em>Figure 1. MOHTECH Solutions - lab Topology</em></p>
+  <img src="MOHTECH-Network-Topology.png" width="85%" alt="MOHTECH Solutions Network Topology">
+  <p><em>Figure 1. Lab Network Topology</em></p>
 </div>
 
 ---
 
-## 05. Infrastructure Implementation
+## 03. Infrastructure Implementation
 
-*This section will document the configuration and deployment of the infrastructure components, supported by screenshots and verification results.*
+### 3.1 Server and Network Configuration
 
-### 05.1 Active Directory Domain Services
+- Deployed Windows Server 2019.
+- Configured external and internal network interfaces.
+- Assigned a static IP address to the internal interface.
+- Configured NAT to provide internet connectivity to internal clients.
+- Installed and configured DNS and DHCP services.
 
-### 05.2 DNS and DHCP
+**Server Network Configuration**
 
-### 05.3 Organizational Units and Security Groups
+<div align="center">
+  <img src="screenshots/01-server-network/network-configuration.png" width="85%" alt="Server network configuration">
+</div>
 
-### 05.4 Departmental File Sharing and Permissions
+**DNS and DHCP Configuration**
 
-### 05.5 Group Policy Configuration
+<div align="center">
+  <img src="screenshots/01-server-network/dns-dhcp.png" width="85%" alt="DNS and DHCP configuration">
+</div>
 
-### 05.6 PowerShell User Provisioning
+### 3.2 Active Directory
+
+- Installed Active Directory Domain Services (AD DS).
+- Created the domain `ad.mohtechsolutions.test`.
+- Created Organizational Units for Employees, Groups, and Computers.
+- Organized departmental users and computer accounts.
+- Created departmental security groups for IT, HR, Finance, and Sales.
+
+**Active Directory Domain and Organizational Units**
+
+<div align="center">
+  <img src="screenshots/02-active-directory/organizational-units.png" width="85%" alt="Active Directory Organizational Units">
+</div>
+
+**Departmental Security Groups**
+
+<div align="center">
+  <img src="screenshots/02-active-directory/security-groups.png" width="85%" alt="Active Directory Security Groups">
+</div>
+
+### 3.3 File Sharing and Access Control
+
+- Created departmental shared folders for IT, HR, Finance, and Sales.
+- Configured SMB share permissions and NTFS permissions.
+- Assigned access based on departmental security groups.
+- Tested access restrictions between departments.
+
+**Departmental Shared Folders and Permissions**
+
+<div align="center">
+  <img src="screenshots/03-file-sharing/folder-permissions.png" width="85%" alt="Departmental folder permissions">
+</div>
+
+**Access Control Verification**
+
+<div align="center">
+  <img src="screenshots/03-file-sharing/access-denied.png" width="85%" alt="Access denied verification">
+</div>
+
+### 3.4 Group Policy
+
+- Created and linked a workstation inactivity-lock Group Policy.
+- Configured a 10-minute inactivity limit.
+- Applied and checked policy settings on the client workstation.
+
+**Group Policy Configuration**
+
+<div align="center">
+  <img src="screenshots/04-group-policy/gpo-configuration.png" width="85%" alt="Group Policy configuration">
+</div>
+
+**Applied Group Policy Verification**
+
+<div align="center">
+  <img src="screenshots/04-group-policy/gpo-verification.png" width="85%" alt="Applied Group Policy verification">
+</div>
+
+### 3.5 PowerShell User Provisioning
+
+- Used PowerShell to automate the creation of Active Directory user accounts.
+
+**PowerShell User Provisioning Script**
+
+<div align="center">
+  <img src="screenshots/05-powershell/user-provisioning.png" width="85%" alt="PowerShell user provisioning">
+</div>
 
 ---
 
-## 06. Troubleshooting and Verification
+## 04. Troubleshooting and Verification
 
-*Documenting practical issues encountered during implementation, the troubleshooting process, and the solutions applied.*
+Practical troubleshooting performed during implementation:
+
+- Diagnosed an account login failure caused by a disabled user account.
+- Tested departmental folder permissions using different user accounts.
+- Refreshed and checked Group Policy application on the client workstation.
 
 ---
 
-## 07. Skills Demonstrated
+## 05. Skills Demonstrated
 
 - Windows Server Administration
-- Active Directory Management
+- Active Directory and Group Policy
 - DNS and DHCP Administration
-- Network Configuration and NAT
-- Group Policy Management
-- NTFS and SMB Permissions
-- PowerShell Fundamentals
+- NAT and Network Configuration
+- SMB and NTFS Permissions
+- PowerShell Automation
 - IT Troubleshooting
