@@ -63,14 +63,15 @@ The lab uses a dual-network-interface server, connecting the internal company ne
   <img src="IPconfig.png" width="85%" alt="Server network configuration">
 </div>
 
-**DNS and DHCP Configuration**
+**DHCP Configuration**
 
 <div align="center">
-  <img src="screenshots/01-server-network/dns-dhcp.png" width="85%" alt="DNS and DHCP configuration">
+  <img src="DHCP-scope.png" width="85%" alt="DNS and DHCP configuration">
+
 </div>
 
 ### 3.2 Active Directory
-
+<img src="Domain.png" width="85%" alt="Server network configuration">
 - Installed Active Directory Domain Services (AD DS).
 - Created the domain `ad.mohtechsolutions.test`.
 - Created Organizational Units for Employees, Groups, and Computers.
@@ -80,7 +81,7 @@ The lab uses a dual-network-interface server, connecting the internal company ne
 **Active Directory Domain and Organizational Units**
 
 <div align="center">
-  <img src="screenshots/02-active-directory/organizational-units.png" width="85%" alt="Active Directory Organizational Units">
+  <img src="Domian-added-usercomputers" width="85%" alt="Active Directory Organizational Units">
 </div>
 
 **Departmental Security Groups**
