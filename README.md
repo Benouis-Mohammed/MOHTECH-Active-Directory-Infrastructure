@@ -77,7 +77,7 @@ Windows Server is also configured to provide NAT for internal network connectivi
 The following diagram illustrates the lab architecture, including the Windows Server, its network interfaces, and the internal company network.
 
 <div align="center">
-  <img src="" width="100%" alt="MOHTECH Solutions Network Topology">
+  <img src="Mohtech-diag.pdf" width="100%" alt="MOHTECH Solutions Network Topology">
   <p><em>Figure 1. MOHTECH Solutions - Network Topology</em></p>
 </div>
 
